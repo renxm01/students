@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <style>
+        html{
+            font-size: 100px;
+        }
+        *{
+            margin: 0;
+            padding:0;
+        }
+        nav {
+            display: flex;
+            height:0.4rem ;
+            line-height: 0.4rem;
+            background: #ccc;
+            font-size: 0.16rem;
+        }
+        a{
+            flex:1;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">首页</a>
+        <a href="#">详情页</a>
+        <a href="#">主体也</a>
+        <a href="#">关于我们</a>
+    </nav>
+    <script>
+        (function () {
+            var supportsOrientationChange = 'onorientationchange' in window ? 'orientationchange' : 'resize';
+            var clientWidth = document.documentElement.clientWidth;
+            var timer;
+            function setRem() {
+                clientWidth = document.documentElement.clientWidth;
+                var nowPX = clientWidth / 320 * 100;
+                document.documentElement.style.fontSize = nowPX + 'px';
+            }
+            clientWidth !== 320 && setRem();
+            window.addEventListener(supportsOrientationChange, function () {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    setRem();
+                }, 300);
+            }, false);
+        })();
+    </script>
+</body>
+</html>
